@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Feb  8 11:49:38 2022
 
-@author: maria
-"""
 
 import pandas as pd
 import streamlit as st
@@ -29,15 +25,6 @@ titulo = tipo + ' para '
 pais = st.sidebar.selectbox('Selecione o pais', ['Todos']+ paises)
 variante = st.sidebar.selectbox('Selecione a variante', ['Todas'] + variants )
 
-color = st.sidebar.select_slider(
-     'Select a color of the rainbow',
-     options=['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'])
-st.write('My favorite color is', color)
-start_color, end_color = st.sidebar.select_slider(
-     'Select a range of color wavelength',
-     options=['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'],
-     value=('red', 'blue'))
-st.write('You selected wavelengths between', start_color, 'and', end_color)
 
 def load_data():
     data = pd.read_csv('covid-variants.csv') 
@@ -85,8 +72,5 @@ fig = px.bar(dfShow, x=dfShow.index, y='num_sequences')
 fig.update_layout(title=titulo )
 st.plotly_chart(fig, use_container_width=True)
 
-fig = px.bar(dfShow, x=dfShow.index, y='num_sequences')
-fig.update_layout(title=titulo )
-st.plotly_chart(fig, use_container_width=True)
 
 
